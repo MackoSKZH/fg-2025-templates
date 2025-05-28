@@ -1,0 +1,56 @@
+:root {
+    /* BRAND ACCENT COLORS for FIRST LEGO League */
+    --spx-accent-color:rgba(0, 0, 0, 1);
+  
+    /* PLATE 1 */
+    --spx-bgcol1-color:rgba(255, 255, 255, 1);
+    --spx-txcol1-color:rgb(0, 0, 0);
+    --spx-txsha1-color: rgba(0, 0, 0, 0.3);
+  
+    /* PLATE 2 */
+    --spx-bgcol2-color:rgba(46, 98, 177, 1);
+    --spx-txcol2-color:rgb(255, 255, 255);
+    --spx-txsha2-color: rgba(0, 0, 0, 0.3);
+  
+    /* PLATE 3 */
+    --spx-bgcol3-color:rgba(217, 56, 41, 1);
+    --spx-txcol3-color:rgb(255, 255, 255);
+    --spx-txsha3-color: rgba(0, 0, 0, 0.2);
+  
+    /* SKEW degrees for angled backgrounds */
+    --skew-amount-degs: -10deg; /* Increased skew for sharper angle */
+  
+    /* ROUNDING VALUES for backgrounds */
+    --rounding-first: 1em; /* Rounded corners for playful look */
+    --rounding-second: 0.8em;
+  }
+  
+  
+  /* Use <c#>word</c#> tags for inline text colors */
+  c1 { color: var(--spx-accent-color); }
+  c2 { color: var(--spx-bgcol1-color); }
+  c3 { color: red ;}
+  c4 { color: orange; }
+  c5 { color: yellow; }
+  c6 { color: green; }
+  c7 { color: cyan; }
+  c8 { color: blue; }
+  c9 { color: purple; }
+  
+  /* Fonts */
+  @font-face {
+    font-family: "UI-Light";
+    src: url("../fonts/EncodeSansSemiExpanded-Light.ttf");
+  }
+  @font-face {
+    font-family: "UI-Regular";
+    src: url("../fonts/EncodeSansSemiExpanded-Regular.ttf");
+  }
+  @font-face {
+    font-family: "UI-Bold";
+    src: url("../fonts/EncodeSansSemiExpanded-Bold.ttf");
+  }
+  @font-face {
+    font-family: "UI-Black";
+    src: url("../fonts/EncodeSansSemiExpanded-Black.ttf");
+  }

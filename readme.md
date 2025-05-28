@@ -1,0 +1,1 @@
+## FG Slovakia 2025 Template Pack for SPX

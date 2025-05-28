@@ -1,0 +1,43 @@
+:root {
+    /* BRAND ACCENT COLORS primary and secondary */
+    --spx-accent-color: #EE1C25;
+  
+    /* PLATE 1 (Meno) */
+    --spx-bgcol1-color: rgba(12, 45, 131, 0.9); /* tmavomodrá */
+    --spx-txcol1-color: #FFFFFF;
+    --spx-txsha1-color: rgba(0, 0, 0, 0.3);
+  
+    /* PLATE 2 (Titul) */
+    --spx-bgcol2-color: rgba(12, 45, 131, 0.8);
+    --spx-txcol2-color: #FFFFFF;
+    --spx-txsha2-color: rgba(0, 0, 0, 0.2);
+  
+    /* PLATE 3 (Organizácia / krajina) */
+    --spx-bgcol3-color: rgba(238, 28, 37, 0.8); /* červená */
+    --spx-txcol3-color: #FFFFFF;
+    --spx-txsha3-color: rgba(0, 0, 0, 0.2);
+  
+    /* SKEW background shapes */
+    --skew-amount-degs: -8deg;
+  
+    /* ROUNDING VALUES for backgrounds */
+    --rounding-first: 0.4em;
+    --rounding-second: 0.4em;
+  }
+  
+  /* Inline text highlight examples */
+  c1 { color: var(--spx-accent-color); }
+  c2 { color: var(--spx-bgcol1-color); }
+  c3 { color: red; }
+  c4 { color: orange; }
+  c5 { color: yellow; }
+  c6 { color: green; }
+  c7 { color: cyan; }
+  c8 { color: blue; }
+  c9 { color: purple; }
+  
+  @font-face { font-family: "UI-Light";   src: url("../fonts/Teko-Light.ttf"); }
+  @font-face { font-family: "UI-Regular"; src: url("../fonts/Teko-Regular.ttf"); }
+  @font-face { font-family: "UI-Bold";    src: url("../fonts/Teko-SemiBold.ttf"); }
+  @font-face { font-family: "UI-Black";   src: url("../fonts/Teko-Bold.ttf"); }
+  

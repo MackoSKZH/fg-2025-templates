@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>4 Teams + Match Number</title>
+    <script type="text/javascript" src="js/lib/gsap3.2.6.min.js"></script>
+    <script type="text/javascript" src="js/spx_interface.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/spx_layout.css" />
+    <link rel="stylesheet" type="text/css" href="css/spx_fonts.css" />
+    <link rel="stylesheet" type="text/css" id="DynamicTheme" href="themes/default.css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+        }
+
+        .tgpos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            background-color: black;
+        }
+
+        #matchNumberBox {
+            background-color: white;
+            color: black;
+            padding: 0.6rem 1.2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: var(--spx-font-family);
+            border-radius: 0.4rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        #teamsContainer {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .teamBox {
+            padding: 1rem 1.5rem;
+            font-size: 1.5rem;
+            font-family: var(--spx-font-family);
+            font-weight: bold;
+            color: white;
+            border-radius: 0.5rem;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        #staticTitle {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .red { background-color: #c62828; }
+        .blue { background-color: #1565c0; }
+    </style>
+
+    <script>
+        function cleanName(filename) {
+        return filename
+            .replace(/^.*[\\/]/, '')
+            .replace(/\.txt$/i, '');
+        }
+
+        function runTemplateUpdate() {
+            e('DynamicTheme').href = e('f99').innerText;
+
+            const matchNumber = e('matchNumber')?.innerText.trim();
+            const matchBox = document.getElementById('matchNumberBox');
+            if (matchBox && matchNumber) {
+                matchBox.innerText = matchNumber;
+                matchBox.style.display = 'inline-block';
+            }
+
+            const teams = [
+                { id: 'teamBlue1', color: 'blue' },
+                { id: 'teamBlue2', color: 'blue' },
+                { id: 'teamRed1',  color: 'red' },
+                { id: 'teamRed2',  color: 'red' }
+            ];
+
+            const container = document.getElementById('teamsContainer');
+            container.innerHTML = '';
+
+            teams.forEach(team => {
+                const raw = e(team.id).innerText.trim();
+                if (raw !== '') {
+                    const div = document.createElement('div');
+                    div.className = 'teamBox ' + team.color;
+                    div.innerText = cleanName(raw);
+                    container.appendChild(div);
+                }
+            });
+
+            gsap.set("#TG", { opacity: 1 });
+            gsap.fromTo("#teamsContainer", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" });
+        }
+
+        function runAnimationIN() {
+            runTemplateUpdate();
+        }
+
+        function runAnimationOUT() {
+            gsap.to("#teamsContainer", { opacity: 0, duration: 0.5, ease: "power2.in" });
+            gsap.set("#TG", { delay: 0.5, opacity: 0 });
+        }
+    </script>
+
+    <script type="text/javascript">
+        window.SPXGCTemplateDefinition = {
+        "description": "4 Teams + Match Number",
+        "playserver": "OVERLAY",
+        "playchannel": "1",
+        "playlayer": "5",
+        "webplayout": "5",
+        "out": "manual",
+        "dataformat": "json",
+        "uicolor": "7",
+        "DataFields": [
+            {
+            "field": "comment",
+            "ftype": "textfield",
+            "title": "Item name",
+            "value": "Match teams"
+            },
+            {
+            "field": "matchNumber",
+            "ftype": "textfield",
+            "title": "📋 Match number",
+            "value": "Match 7"
+            },
+            {
+            "field": "teamBlue1",
+            "ftype": "filelist",
+            "title": "🔵 Blue Team 1",
+            "assetfolder": "./teams/",
+            "extension": "txt",
+            "value": ""
+            },
+            {
+            "field": "teamBlue2",
+            "ftype": "filelist",
+            "title": "🔵 Blue Team 2",
+            "assetfolder": "./teams/",
+            "extension": "txt",
+            "value": ""
+            },
+            {
+            "field": "teamRed1",
+            "ftype": "filelist",
+            "title": "🔴 Red Team 1",
+            "assetfolder": "./teams/",
+            "extension": "txt",
+            "value": ""
+            },
+            {
+            "field": "teamRed2",
+            "ftype": "filelist",
+            "title": "🔴 Red Team 2",
+            "assetfolder": "./teams/",
+            "extension": "txt",
+            "value": ""
+            },
+            {
+            "field": "f99",
+            "ftype": "filelist",
+            "title": "Theme",
+            "assetfolder": "./themes/",
+            "extension": "css",
+            "value": "./themes/default.css"
+            }
+        ]
+        };
+    </script>
+</head>
+
+<body>
+    <div class="SPXWindow SPX_AUTOSIZE">
+        <div id="TG" class="tgpos">
+            <div id="staticTitle">FIRST Global Slovensko 2025</div>
+            <div id="matchNumberBox"></div>
+            <div id="teamsContainer"></div>
+        </div>
+
+        <div style="opacity:0;" id="matchNumber"></div>
+        <div style="opacity:0;" id="teamBlue1"></div>
+        <div style="opacity:0;" id="teamBlue2"></div>
+        <div style="opacity:0;" id="teamRed1"></div>
+        <div style="opacity:0;" id="teamRed2"></div>
+        <div style="opacity:0;" id="f99"></div>
+    </div>
+</body>
+</html>

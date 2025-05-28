@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>FG Full Layout</title>
+    <script src="js/lib/gsap3.2.6.min.js"></script>
+    <script src="js/spx_interface.js"></script>
+    <link rel="stylesheet" href="css/spx_layout.css" />
+    <link rel="stylesheet" href="css/spx_fonts.css" />
+    <link id="DynamicTheme" rel="stylesheet" href="themes/default.css" />
+
+    <style>
+        * { font-family: sans-serif; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            background-color: transparent;
+        }
+
+        .SPXWindow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .tgpos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #teamsContainer {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            width: 50%;
+            height: 40%;
+        }
+
+        /* LEFT */
+        #left-container {
+            width: 30%;
+            height: 70%;
+            border-bottom-left-radius: 20px;
+        }
+
+        #matchNumberBox {
+            font-weight: bolder;
+            font-size: 150%;
+            background-color: #91d08a;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20%;
+        }
+
+        #red-alliance {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: end;
+            height: 80%;
+            width: 100%;
+        }
+
+        .red, .blue {
+            height: 43%;
+            width: 95%;
+            color: white;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #teamRed1 { border-top-left-radius: 20px; }
+        #teamRed2 { border-bottom-left-radius: 20px; }
+
+        /* MIDDLE */
+        #middle-container {
+            width: 40%;
+            height: 80%;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: black;
+        }
+
+        #logoBox {
+            height: 50%;
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #matchLogo {
+            width: 100%;
+            height: 65%;
+        }
+
+        #time-counter {
+            height: 50%;
+        }
+
+        /* RIGHT */
+        #right-container {
+            width: 30%;
+            height: 70%;
+            border-bottom-right-radius: 20px;
+        }
+
+        #staticTitle {
+            font-weight: bolder;
+            font-size: 120%;
+            background-color: #91d08a;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20%;
+        }
+
+        #blue-alliance {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: start;
+            height: 80%;
+            width: 100%;
+        }
+
+        #teamBlue1 { border-top-right-radius: 20px; }
+        #teamBlue2 { border-bottom-right-radius: 20px; }
+
+        #teamRed1, #teamRed2,
+        #teamBlue1, #teamBlue2 {
+            font-size: 160%;
+        }
+
+        #left-container, #right-container {
+            background-color: black;
+        }
+
+        .red { background-color: #c62828; }
+        .blue { background-color: #1565c0; }
+    </style>
+
+    <script>
+        function cleanName(filename) {
+            return filename.replace(/^.*[\\/]/, '').replace(/\.txt$/i, '');
+        }
+
+        function runTemplateUpdate() {
+            document.getElementById('matchNumber').innerText = e('matchNumber').innerText.trim();
+            document.getElementById('teamRed1').innerText = cleanName(e('redTeam1').innerText.trim());
+            document.getElementById('teamRed2').innerText = cleanName(e('redTeam2').innerText.trim());
+            document.getElementById('teamBlue1').innerText = cleanName(e('blueTeam1').innerText.trim());
+            document.getElementById('teamBlue2').innerText = cleanName(e('blueTeam2').innerText.trim());
+
+            gsap.to("#TG", { opacity: 1, duration: 0.5, ease: "power2.out" });
+        }
+
+        function runAnimationIN() {
+            runTemplateUpdate();
+        }
+
+        function runAnimationOUT() {
+            gsap.to("#TG", { opacity: 0, duration: 0.5, ease: "power2.in" });
+        }
+    </script>
+
+    <script type="text/javascript">
+        window.SPXGCTemplateDefinition = {
+            "description": "FG full layout centered",
+            "playserver": "OVERLAY",
+            "playchannel": "1",
+            "playlayer": "5",
+            "webplayout": "5",
+            "out": "manual",
+            "dataformat": "json",
+            "uicolor": "7",
+            "DataFields": [
+                { "field": "matchNumber", "ftype": "textfield", "title": "Match number", "value": "MATCH 1" },
+                { "field": "redTeam1", "ftype": "filelist", "title": "🔴 Red Team 1", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" },
+                { "field": "redTeam2", "ftype": "filelist", "title": "🔴 Red Team 2", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" },
+                { "field": "blueTeam1", "ftype": "filelist", "title": "🔵 Blue Team 1", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" },
+                { "field": "blueTeam2", "ftype": "filelist", "title": "🔵 Blue Team 2", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" }
+            ]
+        };
+    </script>
+</head>
+
+<body>
+    <div class="SPXWindow SPX_AUTOSIZE">
+        <div id="TG" class="tgpos">
+            <div id="teamsContainer">
+                <div id="left-container">
+                <div id="matchNumberBox"><div id="matchNumber">MATCH 1</div></div>
+                    <div id="red-alliance">
+                        <div class="red" id="teamRed1">Team#3</div>
+                        <div class="red" id="teamRed2">Team#4</div>
+                    </div>
+                </div>
+
+                <div id="middle-container">
+                    <div id="logoBox">
+                        <img id="matchLogo" src="img/FIRST_Global_Slovakia_Logo_2025_white.png" />
+                    </div>
+                    <div id="time-counter"></div>
+                </div>
+
+                <div id="right-container">
+                    <div id="staticTitle">FIRST Global Slovensko</div>
+                    <div id="blue-alliance">
+                        <div class="blue" id="teamBlue1">Team#1</div>
+                        <div class="blue" id="teamBlue2">Team#2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SPX hidden inputs -->
+        <div style="opacity:0;" id="matchNumber"></div>
+        <div style="opacity:0;" id="redTeam1"></div>
+        <div style="opacity:0;" id="redTeam2"></div>
+        <div style="opacity:0;" id="blueTeam1"></div>
+        <div style="opacity:0;" id="blueTeam2"></div>
+    </div>
+</body>
+</html>

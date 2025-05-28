@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>FG Overlay Basic</title>
+    <script src="js/lib/gsap3.2.6.min.js"></script>
+    <script src="js/spx_interface.js"></script>
+    <link rel="stylesheet" href="css/spx_layout.css" />
+    <link rel="stylesheet" href="css/spx_fonts.css" />
+    <link id="DynamicTheme" rel="stylesheet" href="themes/default.css" />
+
+    <style>
+        .tgpos {
+            position: absolute;
+            left: 0;
+            bottom: 5%;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+            opacity: 0;
+        }
+
+        #mainOverlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            background-color: transparent;
+        }
+
+        .teamPanel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem;
+            min-width: 150px;
+            border-radius: 0.5rem;
+        }
+
+        .redPanel {
+            background-color: #c62828;
+            color: white;
+        }
+
+        .bluePanel {
+            background-color: #1565c0;
+            color: white;
+        }
+
+        .teamName {
+            font-size: 1.4rem;
+            font-family: var(--spx-font-family);
+            font-weight: bold;
+            margin: 0.3rem 0;
+        }
+
+        #centerPanel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 0.5rem;
+        }
+
+        #infoBar {
+            background-color: #7ac943;
+            color: black;
+            padding: 0.6rem 1.2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            font-family: var(--spx-font-family);
+            margin-top: 1rem;
+            border-radius: 0.3rem;
+        }
+    </style>
+
+    <script>
+        function cleanName(filename) {
+            return filename.replace(/^.*[\\/]/, '').replace(/\.txt$/i, '');
+        }
+
+        function runTemplateUpdate() {
+            e("DynamicTheme").href = e("f99").innerText;
+
+            const red1 = cleanName(e("redTeam1").innerText.trim());
+            const red2 = cleanName(e("redTeam2").innerText.trim());
+            const blue1 = cleanName(e("blueTeam1").innerText.trim());
+            const blue2 = cleanName(e("blueTeam2").innerText.trim());
+            const matchLabel = e("matchLabel").innerText.trim();
+
+            document.getElementById("red1").innerText = red1;
+            document.getElementById("red2").innerText = red2;
+            document.getElementById("blue1").innerText = blue1;
+            document.getElementById("blue2").innerText = blue2;
+            document.getElementById("matchInfo").innerText = matchLabel + " | FIRST Global Slovensko 2025";
+
+            gsap.fromTo("#TG", { opacity: 0 }, { opacity: 1, duration: 0.5 });
+        }
+
+        function runAnimationIN() {
+            runTemplateUpdate();
+        }
+
+        function runAnimationOUT() {
+            gsap.to("#TG", { opacity: 0, duration: 0.4 });
+        }
+    </script>
+
+    <script>
+        window.SPXGCTemplateDefinition = {
+            "description": "FG Overlay - 4 teams",
+            "playserver": "OVERLAY",
+            "playchannel": "1",
+            "playlayer": "5",
+            "webplayout": "5",
+            "out": "manual",
+            "dataformat": "json",
+            "uicolor": "7",
+            "DataFields": [
+                { "field": "comment", "ftype": "textfield", "title": "Item name", "value": "FG 4 teams" },
+                { "field": "matchLabel", "ftype": "textfield", "title": "📋 Match label", "value": "Match 3" },
+                { "field": "redTeam1", "ftype": "filelist", "title": "🔴 Red Team 1", "assetfolder": "./teams/", "extension": "txt", "value": "" },
+                { "field": "redTeam2", "ftype": "filelist", "title": "🔴 Red Team 2", "assetfolder": "./teams/", "extension": "txt", "value": "" },
+                { "field": "blueTeam1", "ftype": "filelist", "title": "🔵 Blue Team 1", "assetfolder": "./teams/", "extension": "txt", "value": "" },
+                { "field": "blueTeam2", "ftype": "filelist", "title": "🔵 Blue Team 2", "assetfolder": "./teams/", "extension": "txt", "value": "" },
+                { "field": "f99", "ftype": "filelist", "title": "Theme", "assetfolder": "./themes/", "extension": "css", "value": "./themes/default.css" }
+            ]
+        };
+    </script>
+</head>
+
+<body>
+    <div class="SPXWindow SPX_AUTOSIZE">
+        <div id="TG" class="tgpos">
+            <div id="mainOverlay">
+                <div class="teamPanel redPanel">
+                    <div class="teamName" id="red1"></div>
+                    <div class="teamName" id="red2"></div>
+                </div>
+                <div id="centerPanel">
+                    <img id="logo" src="gfx/fg_logo.png" alt="FG Logo" />
+                    <div id="infoBar" id="matchInfo"></div>
+                </div>
+                <div class="teamPanel bluePanel">
+                    <div class="teamName" id="blue1"></div>
+                    <div class="teamName" id="blue2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="opacity:0;" id="matchLabel"></div>
+        <div style="opacity:0;" id="redTeam1"></div>
+        <div style="opacity:0;" id="redTeam2"></div>
+        <div style="opacity:0;" id="blueTeam1"></div>
+        <div style="opacity:0;" id="blueTeam2"></div>
+        <div style="opacity:0;" id="f99"></div>
+    </div>
+</body>
+</html>
