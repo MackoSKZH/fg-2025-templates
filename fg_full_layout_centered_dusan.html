@@ -20,9 +20,6 @@
             justify-content: center;
             align-items: start;
             background-color: transparent;
-			
-			background-image: url("file:///d://PXL_20250410_094255083.jpg");
-			background-size: cover;
         }
 
         .SPXWindow {
@@ -56,19 +53,19 @@
         #left-container {
             width: 31%;
             height: 60%;
-			/*background-color: rgba(255, 0, 0, 0.4);*/
+            /*background-color: rgba(255, 0, 0, 0.4);*/
             border-bottom-left-radius: 12px;
-			border-top-left-radius: 12px;
-			margin-top: 22px;
+            border-top-left-radius: 12px;
+            margin-top: 22px;
         }
-		
-		#matchNumber {
-			text-shadow: 2px 2px 2px black, -2px -2px 2px black, 2px -2px 2px black, -2px 2px 2px black;
+
+        #matchNumber {
+            text-shadow: 2px 2px 2px black, -2px -2px 2px black, 2px -2px 2px black, -2px 2px 2px black;
         }
 
         #matchNumberBox {
             font-weight: 600;
-			font-size: 150%;
+            font-size: 150%;
             color: white;
             display: flex;
             justify-content: center;
@@ -105,7 +102,7 @@
             justify-content: space-evenly;
             align-items: center;
             background-color: black;
-			margin-top: 12px;
+            margin-top: 12px;
         }
 
         #logoBox {
@@ -129,21 +126,21 @@
         #right-container {
             width: 31%;
             height: 60%;
-			*/background-color: rgba(66, 121, 219, 0.4);*/
-            border-bottom-right-radius: 12px;
-			border-top-right-radius: 12px;
-			margin-top: 22px;
+            */background-color: rgba(66, 121, 219, 0.4);*/
+        border-bottom-right-radius: 12px;
+            border-top-right-radius: 12px;
+            margin-top: 22px;
         }
 
         #staticTitle {
             font-weight: bolder;
             color: white;
-			font-size: 120%;
+            font-size: 120%;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 25%;
-			text-shadow: 2px 2px 2px black, -2px -2px 2px black, 2px -2px 2px black, -2px 2px 2px black;
+            text-shadow: 2px 2px 2px black, -2px -2px 2px black, 2px -2px 2px black, -2px 2px 2px black;
         }
 
         #blue-alliance {
@@ -155,27 +152,27 @@
             width: 100%;
         }
 
-        #teamBlue1, #teamRed1 { 
-			border-top-right-radius: 12px;
-			border-top-left-radius: 12px;
-		}
-        #teamBlue2, #teamRed2 { 
-			border-bottom-right-radius: 12px; 
-			border-bottom-left-radius: 12px; 
-		}
+        #teamBlue1, #teamRed1 {
+            border-top-right-radius: 12px;
+            border-top-left-radius: 12px;
+        }
+        #teamBlue2, #teamRed2 {
+            border-bottom-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
 
         #teamRed1, #teamRed2,
         #teamBlue1, #teamBlue2 {
             font-size: 100%;
-			text-shadow: 1px 1px 1px black, -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black;
+            text-shadow: 1px 1px 1px black, -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black;
         }
 
-        .red { 
-			background: linear-gradient(135deg, #ff4b2b, #ff416c);
-		}
-        .blue { 
-			background: linear-gradient(135deg, #324e82, #4279db);
-		}
+        .red {
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+        }
+        .blue {
+            background: linear-gradient(135deg, #324e82, #4279db);
+        }
     </style>
 
     <script>
@@ -184,13 +181,11 @@
         }
 
         function runTemplateUpdate() {
-		/*
             document.getElementById('matchNumber').innerText = e('matchNumber').innerText.trim();
             document.getElementById('teamRed1').innerText = cleanName(e('redTeam1').innerText.trim());
             document.getElementById('teamRed2').innerText = cleanName(e('redTeam2').innerText.trim());
             document.getElementById('teamBlue1').innerText = cleanName(e('blueTeam1').innerText.trim());
             document.getElementById('teamBlue2').innerText = cleanName(e('blueTeam2').innerText.trim());
-*/
             gsap.to("#TG", { opacity: 1, duration: 0.5, ease: "power2.out" });
         }
 
@@ -215,50 +210,50 @@
             "uicolor": "7",
             "DataFields": [
                 { "field": "matchNumber", "ftype": "textfield", "title": "Match number", "value": "MATCH 1" },
-                { "field": "redTeam1", "ftype": "filelist", "title": "🔴 Red Team 1", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" },
-                { "field": "redTeam2", "ftype": "filelist", "title": "🔴 Red Team 2", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" },
-                { "field": "blueTeam1", "ftype": "filelist", "title": "🔵 Blue Team 1", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" },
-                { "field": "blueTeam2", "ftype": "filelist", "title": "🔵 Blue Team 2", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" }
+                { "field": "redTeam1", "ftype": "filelist", "title": "ðŸ”´ Red Team 1", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" },
+                { "field": "redTeam2", "ftype": "filelist", "title": "ðŸ”´ Red Team 2", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" },
+                { "field": "blueTeam1", "ftype": "filelist", "title": "ðŸ”µ Blue Team 1", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" },
+                { "field": "blueTeam2", "ftype": "filelist", "title": "ðŸ”µ Blue Team 2", "value": "NONE", "assetfolder": "./teams/", "extension": "txt" }
             ]
         };
     </script>
 </head>
 
-<body onLoad="runTemplateUpdate()">
-    <div class="SPXWindow SPX_AUTOSIZE">
-        <div id="TG" class="tgpos">
-            <div id="teamsContainer">
-                <div id="left-container">
+<body>
+<div class="SPXWindow SPX_AUTOSIZE">
+    <div id="TG" class="tgpos">
+        <div id="teamsContainer">
+            <div id="left-container">
                 <div id="matchNumberBox"><div id="matchNumber">MATCH 1</div></div>
-                    <div id="red-alliance">
-                        <div class="red" id="teamRed1">Pink Panthers</div>
-                        <div class="red" id="teamRed2">Galileo School</div>
-                    </div>
+                <div id="red-alliance">
+                    <div class="red" id="teamRed1">Pink Panthers</div>
+                    <div class="red" id="teamRed2">Galileo School</div>
                 </div>
+            </div>
 
-                <div id="middle-container">
-                    <div id="logoBox">
-                        <img id="matchLogo" src="img/FIRST_Global_Slovakia_Logo_2025_white.png" />
-                    </div>
-                    <div id="time-counter"><img src="file:///d://timer.png" width="150"></div>
+            <div id="middle-container">
+                <div id="logoBox">
+                    <img id="matchLogo" src="img/FIRST_Global_Slovakia_Logo_2025_white.png" />
                 </div>
+                <div id="time-counter"><img src="img/timer.png" width="150"></div>
+            </div>
 
-                <div id="right-container">
-                    <div id="staticTitle">FIRST Global Slovensko</div>
-                    <div id="blue-alliance">
-                        <div class="blue" id="teamBlue1">Pokus Omyl</div>
-                        <div class="blue" id="teamBlue2">SPSE Repre</div>
-                    </div>
+            <div id="right-container">
+                <div id="staticTitle">FIRST Global Slovensko</div>
+                <div id="blue-alliance">
+                    <div class="blue" id="teamBlue1">Pokus Omyl</div>
+                    <div class="blue" id="teamBlue2">SPSE Repre</div>
                 </div>
             </div>
         </div>
-
-        <!-- SPX hidden inputs -->
-        <div style="opacity:0;" id="matchNumber"></div>
-        <div style="opacity:0;" id="redTeam1"></div>
-        <div style="opacity:0;" id="redTeam2"></div>
-        <div style="opacity:0;" id="blueTeam1"></div>
-        <div style="opacity:0;" id="blueTeam2"></div>
     </div>
+
+    <!-- SPX hidden inputs -->
+    <div style="opacity:0;" id="matchNumber"></div>
+    <div style="opacity:0;" id="redTeam1"></div>
+    <div style="opacity:0;" id="redTeam2"></div>
+    <div style="opacity:0;" id="blueTeam1"></div>
+    <div style="opacity:0;" id="blueTeam2"></div>
+</div>
 </body>
 </html>
